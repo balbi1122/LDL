@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Types - Lite Doc Loans</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .loan-types-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .loan-type {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background-color: var(--background-light);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .loan-type h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .loan-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background-color: var(--background-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .eligibility {
+            margin: 2rem 0;
+        }
+
+        .eligibility ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .eligibility li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .eligibility li:before {
+            content: "✓";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        .case-study {
+            background-color: var(--background-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .case-study h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .loan-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.svg" alt="Lite Doc Loans Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="loans.html" class="active">Loans</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </div>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Our Loan Solutions</h1>
+                <p>Find the perfect financing option for your real estate investment needs</p>
+            </div>
+        </section>
+
+        <div class="loan-types-container">
+            <div id="construction" class="loan-type">
+                <h2>Construction Loans</h2>
+                <p>Our construction loans provide the funding you need to build your dream property from the ground up. With flexible terms and quick approval, we make the construction process smooth and efficient.</p>
+                
+                <div class="loan-features">
+                    <div class="feature-card">
+                        <h3>Loan Amount</h3>
+                        <p>Up to 75% of project cost</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Term</h3>
+                        <p>6-24 months</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Interest Rate</h3>
+                        <p>Competitive rates starting at 8%</p>
+                    </div>
+                </div>
+
+                <div class="eligibility">
+                    <h3>Eligibility Requirements</h3>
+                    <ul>
+                        <li>Detailed construction plans and budget</li>
+                        <li>Experienced general contractor</li>
+                        <li>Property purchase agreement or ownership</li>
+                        <li>Minimum 25% equity in the project</li>
+                    </ul>
+                </div>
+
+                <div class="case-study">
+                    <h3>Success Story</h3>
+                    <p>"We needed quick funding for our 12-unit apartment complex. Lite Doc Loans provided the construction loan in just 5 days, allowing us to start building immediately. Their flexible terms and understanding of our project made all the difference."</p>
+                    <cite>- Michael R., Property Developer</cite>
+                </div>
+            </div>
+
+            <div id="fix-flip" class="loan-type">
+                <h2>Fix and Flip Loans</h2>
+                <p>Turn distressed properties into profitable investments with our fix and flip loans. We provide the capital you need to purchase, renovate, and sell properties quickly.</p>
+                
+                <div class="loan-features">
+                    <div class="feature-card">
+                        <h3>Loan Amount</h3>
+                        <p>Up to 70% of ARV</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Term</h3>
+                        <p>6-12 months</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Interest Rate</h3>
+                        <p>Competitive rates starting at 8%</p>
+                    </div>
+                </div>
+
+                <div class="eligibility">
+                    <h3>Eligibility Requirements</h3>
+                    <ul>
+                        <li>Property purchase agreement</li>
+                        <li>Detailed renovation plan and budget</li>
+                        <li>Experienced contractor or renovation team</li>
+                        <li>Exit strategy (sale or refinance)</li>
+                    </ul>
+                </div>
+
+                <div class="case-study">
+                    <h3>Success Story</h3>
+                    <p>"As a first-time flipper, I was nervous about getting funding. Lite Doc Loans made the process simple and fast. Their team helped me understand the requirements and provided the loan in just 5 days. The property sold for a 30% profit!"</p>
+                    <cite>- Sarah T., Real Estate Investor</cite>
+                </div>
+            </div>
+
+            <div id="bridge" class="loan-type">
+                <h2>Bridge Loans</h2>
+                <p>Bridge the gap between properties with our short-term financing solutions. Perfect for investors who need quick access to capital while waiting for long-term financing or property sales.</p>
+                
+                <div class="loan-features">
+                    <div class="feature-card">
+                        <h3>Loan Amount</h3>
+                        <p>Up to 75% of property value</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Term</h3>
+                        <p>3-12 months</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Interest Rate</h3>
+                        <p>Competitive rates starting at 8%</p>
+                    </div>
+                </div>
+
+                <div class="eligibility">
+                    <h3>Eligibility Requirements</h3>
+                    <ul>
+                        <li>Property ownership or purchase agreement</li>
+                        <li>Clear exit strategy</li>
+                        <li>Property value documentation</li>
+                        <li>Minimum 25% equity in the property</li>
+                    </ul>
+                </div>
+
+                <div class="case-study">
+                    <h3>Success Story</h3>
+                    <p>"We needed to close on a new property before our current one sold. Lite Doc Loans provided a bridge loan in 5 days, allowing us to secure the new property. Their quick approval process saved us from losing the deal."</p>
+                    <cite>- David L., Real Estate Investor</cite>
+                </div>
+            </div>
+
+            <div id="dscr" class="loan-type">
+                <h2>DSCR Loans</h2>
+                <p>Our Debt Service Coverage Ratio (DSCR) loans are perfect for investment properties with strong cash flow. We focus on the property's performance rather than personal income.</p>
+                
+                <div class="loan-features">
+                    <div class="feature-card">
+                        <h3>Loan Amount</h3>
+                        <p>Up to 75% of property value</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Term</h3>
+                        <p>5-30 years</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Interest Rate</h3>
+                        <p>Competitive rates starting at 7%</p>
+                    </div>
+                </div>
+
+                <div class="eligibility">
+                    <h3>Eligibility Requirements</h3>
+                    <ul>
+                        <li>Property with positive cash flow</li>
+                        <li>Minimum DSCR of 1.25</li>
+                        <li>Property value documentation</li>
+                        <li>Property management in place</li>
+                    </ul>
+                </div>
+
+                <div class="case-study">
+                    <h3>Success Story</h3>
+                    <p>"We needed to refinance our apartment complex to take advantage of lower rates. Lite Doc Loans provided a DSCR loan based on the property's strong cash flow, without requiring personal income documentation. The process was smooth and efficient."</p>
+                    <cite>- Jennifer M., Property Owner</cite>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@litedoc.loans</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="apply.html">Apply Now</a>
+                <a href="calculator.html">Loan Calculator</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lite Doc Loans. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

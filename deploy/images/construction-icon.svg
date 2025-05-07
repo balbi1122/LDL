@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 40V20L25 10L40 20V40H10Z" stroke="#1E73BE" stroke-width="2"/>
+    <path d="M20 40V30H30V40" stroke="#1E73BE" stroke-width="2"/>
+    <path d="M25 10V5M10 40H5M45 40H40M10 25H5M45 25H40" stroke="#1E73BE" stroke-width="2"/>
+</svg> 

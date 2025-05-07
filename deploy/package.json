@@ -1,0 +1,16 @@
+{
+  "name": "litedoc-loans",
+  "version": "1.0.0",
+  "description": "Lite Doc Loans - Fast Real Estate Investment Financing",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+} 

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for a loan with Lite Doc Loans - Fast and flexible financing solutions for real estate investors.">
+    <title>Apply for a Loan - Lite Doc Loans</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" aria-label="Lite Doc Loans Home">
+                    <img src="images/logo.png" alt="Lite Doc Loans Logo" width="300" height="80">
+                </a>
+            </div>
+            <button class="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="loans.html">Loans</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Apply for a Loan</h1>
+                <p>Complete the form below to start your loan application process</p>
+            </div>
+        </section>
+
+        <form id="loanApplicationForm" class="application-form">
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="creditScore">Credit Score</label>
+                        <input type="number" id="creditScore" name="creditScore" min="300" max="850" required>
+                        <div class="form-note">Please enter your FICO score (300-850)</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="citizenship">Citizenship Status</label>
+                        <select id="citizenship" name="citizenship" required>
+                            <option value="">Select your status</option>
+                            <option value="US Citizen">US Citizen</option>
+                            <option value="Permanent Resident">Permanent Resident</option>
+                            <option value="Not a Citizen">Not a Citizen</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="entityType">Entity Type</label>
+                        <select id="entityType" name="entityType" required>
+                            <option value="">Select entity type</option>
+                            <option value="LLC">LLC</option>
+                            <option value="S Corp">S Corp</option>
+                            <option value="C Corp">C Corp</option>
+                            <option value="Individual">Individual</option>
+                        </select>
+                        <div class="form-note">Note: Individuals will need to form an LLC to close. Trusts cannot apply.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Loan Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="loanType">Loan Type</label>
+                        <select id="loanType" name="loanType" required>
+                            <option value="">Select loan type</option>
+                            <option value="Construction">Construction</option>
+                            <option value="Fix & Flip">Fix & Flip</option>
+                            <option value="Bridge">Bridge</option>
+                            <option value="DSCR">DSCR</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanAmount">Requested Loan Amount</label>
+                        <input type="number" id="loanAmount" name="loanAmount" min="100000" step="10000" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Property Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="propertyAddress">Property Address</label>
+                        <input type="text" id="propertyAddress" name="propertyAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyType">Property Type</label>
+                        <select id="propertyType" name="propertyType" required>
+                            <option value="">Select property type</option>
+                            <option value="Single Family">Single Family</option>
+                            <option value="Multi Family">Multi Family</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Mixed Use">Mixed Use</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchasePrice">Purchase Price</label>
+                        <input type="number" id="purchasePrice" name="purchasePrice" min="0" step="10000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="renovationBudget">Renovation Budget</label>
+                        <input type="number" id="renovationBudget" name="renovationBudget" min="0" step="10000" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Additional Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="experienceLevel">Experience Level</label>
+                        <select id="experienceLevel" name="experienceLevel" required>
+                            <option value="">Select experience level</option>
+                            <option value="First Time">First Time</option>
+                            <option value="1-2 Projects">1-2 Projects</option>
+                            <option value="3-5 Projects">3-5 Projects</option>
+                            <option value="5+ Projects">5+ Projects</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Submit Application</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@litedocloans.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Hours: Mon-Fri 9am-5pm EST</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="loans.html">Loans</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lite Doc Loans. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('loanApplicationForm');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Disable submit button and show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                try {
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+
+                    const response = await fetch('http://localhost:3000/submit-application', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Show success message
+                        alert('Application submitted successfully! We will contact you within 24 hours.');
+                        form.reset();
+                    } else {
+                        throw new Error(result.message || 'Failed to submit application');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your application. Please try again later.');
+                } finally {
+                    // Re-enable submit button and restore original text
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 

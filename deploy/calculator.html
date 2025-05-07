@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Investment Calculator - Lite Doc Loans</title>
+    <meta name="description" content="Compare traditional financing with LiteDoc Loans to see the real impact on your investment returns">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .calculator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .calculator-form {
+            background-color: var(--background-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            min-width: 150px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .slider-container input[type="text"] {
+            width: 120px;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-align: right;
+        }
+
+        .results-container {
+            background-color: var(--background-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-summary {
+            background-color: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-summary h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .results-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        .savings-highlight {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .timeline {
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            margin-right: 1rem;
+        }
+
+        .rate-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .calculator-container {
+                padding: 0.5rem;
+            }
+
+            .calculator-form, 
+            .results-container {
+                padding: 1rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.25rem;
+            }
+
+            .slider-container {
+                gap: 0.75rem;
+            }
+
+            .slider-container input[type="range"] {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .slider-container input[type="text"] {
+                width: 100%;
+                text-align: center;
+            }
+
+            .results-table {
+                font-size: 0.8rem;
+            }
+
+            .results-table th,
+            .results-table td {
+                padding: 0.5rem;
+            }
+
+            /* Make the table scrollable horizontally on mobile */
+            .results-container {
+                overflow-x: auto;
+            }
+
+            .results-table {
+                min-width: 600px; /* Ensure table doesn't get too cramped */
+            }
+
+            /* Improve touch targets */
+            select,
+            .slider-container input[type="range"]::-webkit-slider-thumb {
+                min-height: 44px; /* Minimum touch target size */
+            }
+
+            .slider-container input[type="text"] {
+                min-height: 44px;
+                font-size: 1.1rem;
+            }
+
+            /* Adjust text sizes for better readability */
+            .form-group label {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .results-summary p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            .savings-highlight {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Additional mobile optimizations for very small screens */
+        @media (max-width: 480px) {
+            .calculator-container {
+                padding: 0.25rem;
+            }
+
+            .calculator-form, 
+            .results-container {
+                padding: 0.75rem;
+            }
+
+            .form-group label {
+                font-size: 0.95rem;
+            }
+
+            .results-summary {
+                padding: 1rem;
+            }
+
+            .results-table th {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        #emailForm .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        #emailForm input[type="email"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .mobile-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="Lite Doc Loans Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="loans.html">Loans</a>
+                <a href="calculator.html" class="active">Calculator</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </div>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Real Estate Investment Calculator</h1>
+                <p>Compare traditional financing with LiteDoc Loans to see the real impact on your investment returns</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="calculator-container">
+                <div class="calculator-grid">
+                    <div class="calculator-form">
+                        <form id="calculatorForm">
+                            <div class="form-group">
+                                <label for="propertyValue">After Repair Value - ARV ($)</label>
+                                <div class="slider-container">
+                                    <input type="range" id="propertyValue" name="propertyValue" min="100000" max="10000000" step="100000" value="200000">
+                                    <input type="text" id="propertyValueValue" name="propertyValueValue" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loanAmount">Purchase Price ($)</label>
+                                <div class="slider-container">
+                                    <input type="range" id="loanAmount" name="loanAmount" min="50000" max="5000000" step="50000" value="150000">
+                                    <input type="text" id="loanAmountValue" name="loanAmountValue" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="renovationCost">Renovation Budget ($)</label>
+                                <div class="slider-container">
+                                    <input type="range" id="renovationCost" name="renovationCost" min="0" max="500000" step="10000" value="50000">
+                                    <input type="text" id="renovationCostValue" name="renovationCostValue" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loanTerm">Estimated Holding Period (months)</label>
+                                <div class="slider-container">
+                                    <input type="range" id="loanTerm" name="loanTerm" min="6" max="36" step="1" value="12">
+                                    <input type="text" id="loanTermValue" name="loanTermValue" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loanType">Loan Type</label>
+                                <select id="loanType" name="loanType">
+                                    <option value="construction">Construction Loan</option>
+                                    <option value="fix-flip">Fix & Flip Loan</option>
+                                    <option value="bridge">Bridge Loan</option>
+                                    <option value="dscr">DSCR Loan</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="results-container">
+                        <div class="results-summary">
+                            <h3>Summary</h3>
+                            <p>Using LiteDoc Loans could save you approximately <span id="totalSavings" class="savings-highlight">$12,450</span> and help you close <span id="timeSaved" class="savings-highlight">40</span> days faster compared to traditional financing.</p>
+                        </div>
+
+                        <h3>Financing Comparison</h3>
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Comparison</th>
+                                    <th>Traditional Financing</th>
+                                    <th>LiteDoc Loans</th>
+                                    <th>Difference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Down Payment Required</td>
+                                    <td id="traditionalDownPayment">$62,500</td>
+                                    <td id="liteDocDownPayment">$25,000</td>
+                                    <td id="downPaymentDifference">$37,500 less</td>
+                                </tr>
+                                <tr>
+                                    <td>Out-of-Pocket for Renovations</td>
+                                    <td id="traditionalRenovation">$50,000</td>
+                                    <td id="liteDocRenovation">$0</td>
+                                    <td id="renovationDifference">$50,000 less</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Financing Costs</td>
+                                    <td id="traditionalTotalCost">$11,625</td>
+                                    <td id="liteDocTotalCost">$14,875</td>
+                                    <td id="totalCostDifference">$3,250 more</td>
+                                </tr>
+                                <tr>
+                                    <td>Time to Closing</td>
+                                    <td id="traditionalClosingTime">45 days</td>
+                                    <td id="liteDocClosingTime">5 days</td>
+                                    <td id="closingTimeDifference">40 days faster</td>
+                                </tr>
+                                <tr>
+                                    <td>Opportunity Cost of Delayed Closing</td>
+                                    <td id="traditionalOpportunityCost">$9,200</td>
+                                    <td id="liteDocOpportunityCost">$0</td>
+                                    <td id="opportunityCostDifference">$9,200 saved</td>
+                                </tr>
+                                <tr>
+                                    <td>Capital Required</td>
+                                    <td id="traditionalCapitalRequired">$112,500</td>
+                                    <td id="liteDocCapitalRequired">$25,000</td>
+                                    <td id="capitalRequiredDifference">$87,500 less</td>
+                                </tr>
+                                <tr>
+                                    <td>Potential ROI</td>
+                                    <td id="traditionalROI">21.3%</td>
+                                    <td id="liteDocROI">96.5%</td>
+                                    <td id="roiDifference">75.2% higher</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="timeline">
+                            <h3>Timeline Comparison</h3>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <p>Traditional Financing: 45 days to closing</p>
+                                    <p>LiteDoc Loans: 5 days to closing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="rate-note">* DSCR rates are subject to daily changes based on market conditions</p>
+
+                        <div class="cta-buttons" style="margin-top: 2rem;">
+                            <button id="getReportBtn" class="cta-button">Get Detailed Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="section-title">
+                <h2>Ready to Fund Your Next Investment?</h2>
+                <p>Contact us today to discuss your financing needs or apply now to get started.</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="apply.html" class="cta-button">Apply Now</a>
+                <a href="contact.html" class="secondary-button">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Get Your Detailed Report</h2>
+            <p>Enter your email address to receive a detailed comparison of your financing options.</p>
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="cta-button">Send Report</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@litedoc.loans</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="apply.html">Apply Now</a>
+                <a href="calculator.html">Loan Calculator</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lite Doc Loans. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="calculator_final.js"></script>
+</body>
+</html> 

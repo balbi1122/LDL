@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Types - Lite Doc Loans</title>
+    <meta name="description" content="Explore our range of real estate investment loans including Construction, Fix & Flip, Bridge, and DSCR loans.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .loan-types-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .loan-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .loan-type-card {
+            background-color: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .loan-type-card img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+        }
+
+        .loan-type-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .loan-type-card p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .loan-type-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .loan-type-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .loan-type-card li:before {
+            content: "✓";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .benefit-card {
+            background-color: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--background-light);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .loan-types-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="Lite Doc Loans Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="loans.html" class="active">Loans</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </div>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Our Loan Solutions</h1>
+                <p>Choose the right financing option for your real estate investment strategy</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>Loan Types</h2>
+                <p>Find the perfect financing solution for your investment needs</p>
+            </div>
+            <div class="loan-types-grid">
+                <div class="loan-type-card">
+                    <img src="images/construction-icon.svg" alt="Construction Loan Icon">
+                    <h3>Construction Loans</h3>
+                    <p>Finance your ground-up construction projects with flexible terms and competitive rates.</p>
+                    <ul>
+                        <li>Up to 90% LTV</li>
+                        <li>12-24 month terms</li>
+                        <li>Interest-only payments</li>
+                        <li>Fast approval process</li>
+                    </ul>
+                    <a href="apply.html" class="secondary-button">Apply Now</a>
+                </div>
+
+                <div class="loan-type-card">
+                    <img src="images/fix-flip-icon.svg" alt="Fix & Flip Loan Icon">
+                    <h3>Fix & Flip Loans</h3>
+                    <p>Acquire and renovate properties with our specialized fix & flip financing.</p>
+                    <ul>
+                        <li>Up to 90% purchase price</li>
+                        <li>100% renovation costs</li>
+                        <li>6-12 month terms</li>
+                        <li>No prepayment penalties</li>
+                    </ul>
+                    <a href="apply.html" class="secondary-button">Apply Now</a>
+                </div>
+
+                <div class="loan-type-card">
+                    <img src="images/bridge-icon.svg" alt="Bridge Loan Icon">
+                    <h3>Bridge Loans</h3>
+                    <p>Secure short-term financing to bridge the gap between properties.</p>
+                    <ul>
+                        <li>Up to 80% LTV</li>
+                        <li>12-18 month terms</li>
+                        <li>Interest-only payments</li>
+                        <li>Quick closing process</li>
+                    </ul>
+                    <a href="apply.html" class="secondary-button">Apply Now</a>
+                </div>
+
+                <div class="loan-type-card">
+                    <img src="images/dscr-icon.svg" alt="DSCR Loan Icon">
+                    <h3>DSCR Loans</h3>
+                    <p>Finance investment properties based on property cash flow.</p>
+                    <ul>
+                        <li>Up to 80% LTV</li>
+                        <li>30-year terms available</li>
+                        <li>No income verification</li>
+                        <li>Competitive rates</li>
+                    </ul>
+                    <a href="apply.html" class="secondary-button">Apply Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="section-title">
+                <h2>Why Choose Our Loans?</h2>
+                <p>Experience the advantage of working with a lender who understands real estate investors</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Fast Approval</h3>
+                    <p>Get approved in 5-7 days with our streamlined process</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>High LTV Ratios</h3>
+                    <p>Up to 90% LTV and 100% renovation costs covered</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Minimal Documentation</h3>
+                    <p>Focus on the property's value, not endless paperwork</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="section-title">
+                <h2>Ready to Get Started?</h2>
+                <p>Compare our rates and see how much you can save with our loan calculator</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="calculator.html" class="cta-button">Try Our Calculator</a>
+                <a href="apply.html" class="secondary-button">Apply Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@litedoc.loans</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="apply.html">Apply Now</a>
+                <a href="calculator.html">Loan Calculator</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lite Doc Loans. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

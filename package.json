@@ -1,0 +1,20 @@
+{
+  "name": "litedoc-loans-server",
+  "version": "1.0.0",
+  "description": "Server for LiteDoc Loans application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.3",
+    "nodemailer": "^6.9.9"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+    <!-- House Icon -->
+    <path d="M20 30 L20 20 L30 10 L40 20 L40 30 Z" fill="#2ABED5"/>
+    <!-- Supportive Hand -->
+    <path d="M15 35 C15 30, 20 25, 25 25 C30 25, 35 30, 35 35" fill="#D4A73B"/>
+    <!-- Company Name -->
+    <text x="50" y="30" font-family="Arial" font-size="20" font-weight="bold" fill="#333333">Lite Doc Loans</text>
+</svg> 

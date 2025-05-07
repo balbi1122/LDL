@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator - Lite Doc Loans</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .calculator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .calculator-form {
+            background-color: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .slider-container {
+            position: relative;
+            margin-top: 0.5rem;
+        }
+
+        .slider {
+            width: 100%;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            position: absolute;
+            right: 0;
+            top: -25px;
+            font-weight: 600;
+        }
+
+        .results {
+            background-color: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: var(--background-dark);
+            font-weight: 600;
+        }
+
+        .timeline {
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.svg" alt="Lite Doc Loans Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="loans.html">Loans</a>
+                <a href="calculator.html" class="active">Calculator</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </div>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Loan Calculator</h1>
+                <p>Compare different loan options and find the best solution for your needs</p>
+            </div>
+        </section>
+
+        <div class="calculator-container">
+            <div class="calculator-grid">
+                <div class="calculator-form">
+                    <h2>Calculate Your Loan</h2>
+                    <form id="loanCalculator">
+                        <div class="form-group">
+                            <label for="loanAmount">Loan Amount ($)</label>
+                            <div class="slider-container">
+                                <span class="slider-value" id="loanAmountValue">100,000</span>
+                                <input type="range" id="loanAmount" min="50000" max="2000000" step="50000" value="100000" class="slider">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="propertyValue">Property Value ($)</label>
+                            <div class="slider-container">
+                                <span class="slider-value" id="propertyValueValue">200,000</span>
+                                <input type="range" id="propertyValue" min="100000" max="5000000" step="50000" value="200000" class="slider">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loanType">Loan Type</label>
+                            <select id="loanType">
+                                <option value="construction">Construction Loan</option>
+                                <option value="fix-flip">Fix and Flip Loan</option>
+                                <option value="bridge">Bridge Loan</option>
+                                <option value="dscr">DSCR Loan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loanTerm">Loan Term (months)</label>
+                            <div class="slider-container">
+                                <span class="slider-value" id="loanTermValue">12</span>
+                                <input type="range" id="loanTerm" min="6" max="36" step="6" value="12" class="slider">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="renovationCosts">Estimated Renovation Costs ($)</label>
+                            <div class="slider-container">
+                                <span class="slider-value" id="renovationCostsValue">50,000</span>
+                                <input type="range" id="renovationCosts" min="0" max="500000" step="10000" value="50000" class="slider">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="primary-button">Calculate</button>
+                    </form>
+                </div>
+
+                <div class="results">
+                    <h2>Loan Comparison</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Loan Type</th>
+                                <th>Interest Rate</th>
+                                <th>Monthly Payment</th>
+                                <th>Total Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lite Doc Loans</td>
+                                <td id="liteDocRate">-</td>
+                                <td id="liteDocPayment">-</td>
+                                <td id="liteDocTotal">-</td>
+                            </tr>
+                            <tr>
+                                <td>Traditional Hard Money</td>
+                                <td id="traditionalRate">-</td>
+                                <td id="traditionalPayment">-</td>
+                                <td id="traditionalTotal">-</td>
+                            </tr>
+                            <tr>
+                                <td>Conventional Bank</td>
+                                <td id="bankRate">-</td>
+                                <td id="bankPayment">-</td>
+                                <td id="bankTotal">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="timeline">
+                        <h3>Approval Timeline</h3>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <strong>Lite Doc Loans:</strong> 5 days
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <strong>Traditional Hard Money:</strong> 2-3 weeks
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <strong>Conventional Bank:</strong> 30-60 days
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@litedoc.loans</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="apply.html">Apply Now</a>
+                <a href="calculator.html">Loan Calculator</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lite Doc Loans. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Update slider values
+        document.querySelectorAll('.slider').forEach(slider => {
+            const valueDisplay = document.getElementById(slider.id + 'Value');
+            slider.addEventListener('input', () => {
+                valueDisplay.textContent = new Intl.NumberFormat('en-US').format(slider.value);
+            });
+        });
+
+        // Loan calculation
+        document.getElementById('loanCalculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const loanTerm = parseFloat(document.getElementById('loanTerm').value);
+            const loanType = document.getElementById('loanType').value;
+
+            // Interest rates based on loan type
+            const rates = {
+                liteDoc: 0.08, // 8%
+                traditional: 0.12, // 12%
+                bank: 0.05 // 5%
+            };
+
+            // Calculate monthly payments
+            const liteDocPayment = calculateMonthlyPayment(loanAmount, rates.liteDoc, loanTerm);
+            const traditionalPayment = calculateMonthlyPayment(loanAmount, rates.traditional, loanTerm);
+            const bankPayment = calculateMonthlyPayment(loanAmount, rates.bank, loanTerm);
+
+            // Calculate total costs
+            const liteDocTotal = liteDocPayment * loanTerm;
+            const traditionalTotal = traditionalPayment * loanTerm;
+            const bankTotal = bankPayment * loanTerm;
+
+            // Update results
+            document.getElementById('liteDocRate').textContent = (rates.liteDoc * 100).toFixed(1) + '%';
+            document.getElementById('traditionalRate').textContent = (rates.traditional * 100).toFixed(1) + '%';
+            document.getElementById('bankRate').textContent = (rates.bank * 100).toFixed(1) + '%';
+
+            document.getElementById('liteDocPayment').textContent = formatCurrency(liteDocPayment);
+            document.getElementById('traditionalPayment').textContent = formatCurrency(traditionalPayment);
+            document.getElementById('bankPayment').textContent = formatCurrency(bankPayment);
+
+            document.getElementById('liteDocTotal').textContent = formatCurrency(liteDocTotal);
+            document.getElementById('traditionalTotal').textContent = formatCurrency(traditionalTotal);
+            document.getElementById('bankTotal').textContent = formatCurrency(bankTotal);
+        });
+
+        function calculateMonthlyPayment(principal, rate, term) {
+            const monthlyRate = rate / 12;
+            return principal * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+    </script>
+</body>
+</html> 
