@@ -1,0 +1,34 @@
+[build]
+  publish = "deploy"
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;"
+
+[functions]
+  directory = "functions"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[forms]
+  [forms.notifications]
+    [forms.notifications.email]
+      to = "info@litedoc.loans"
+      from = "forms@litedoc.loans"
+      subject = "New form submission from {{form.name}}"
+      body = "You have a new form submission from {{form.name}}:\n\n{{form.data}}" 
